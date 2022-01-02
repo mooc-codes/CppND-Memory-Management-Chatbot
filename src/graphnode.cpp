@@ -11,7 +11,12 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    //    delete _chatBot;
+    // Reason  for segfault (found by using valgrind) (invalid free)
+    // Trying to delete a memory that was not allocated using new
+    // assign to nullptr instead
+
+    _chatBot = nullptr;
 
     ////
     //// EOF STUDENT CODE
